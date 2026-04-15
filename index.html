@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infografía – Legalización de Certificados Escolares</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Raleway:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1f4e;
+    --red: #c0182a;
+    --gold: #e8b84b;
+    --purple: #7c3aed;
+    --green: #059669;
+    --white: #ffffff;
+    --off: #f4f6fb;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: #c8cedc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 8px 24px;
+    min-height: 100vh;
+  }
+
+  .page-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .infografia {
+    width: 100%;
+    max-width: 860px;
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.22);
+  }
+
+  /* HEADER */
+  .inf-header {
+    background: linear-gradient(135deg, var(--navy) 0%, #1a3880 60%, #0d2a6b 100%);
+    padding: clamp(20px, 4vw, 32px) clamp(20px, 5vw, 40px) clamp(18px, 3.5vw, 28px);
+    position: relative;
+    overflow: hidden;
+  }
+  .inf-header::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 220px; height: 220px; border-radius: 50%;
+    background: rgba(192,24,42,0.25);
+    pointer-events: none;
+  }
+  .inf-header::after {
+    content: '';
+    position: absolute; bottom: -40px; left: 22%;
+    width: 160px; height: 160px; border-radius: 50%;
+    background: rgba(232,184,75,0.08);
+    pointer-events: none;
+  }
+  .hdr-inner { position: relative; z-index: 1; }
+  .hdr-tag {
+    display: inline-block;
+    background: var(--gold); color: var(--navy);
+    font-size: 9px; font-weight: 900;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 4px 14px; border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .hdr-title {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 900; color: var(--white);
+    line-height: 1.1; margin-bottom: 8px;
+  }
+  .hdr-title em { color: var(--gold); font-style: normal; }
+  .hdr-sub {
+    font-size: clamp(10px, 2vw, 12px);
+    color: rgba(255,255,255,0.6);
+    font-weight: 600; max-width: 500px; line-height: 1.55;
+  }
+
+  /* BODY */
+  .inf-body {
+    background: var(--off);
+    padding: clamp(14px, 3vw, 22px) clamp(14px, 3vw, 22px);
+  }
+
+  /* ALERT */
+  .alert-box {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #fffbeb;
+    border: 1.5px solid #fcd34d;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+  .alert-icon { font-size: 20px; flex-shrink: 0; }
+  .alert-text {
+    font-size: clamp(10px, 2vw, 11px);
+    color: #78350f; font-weight: 700; line-height: 1.55;
+  }
+
+  /* STEPS */
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .step {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 12px 13px;
+    display: flex; gap: 10px; align-items: flex-start;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.055);
+    border-left: 4px solid var(--navy);
+  }
+  .step.pago  { border-left-color: var(--purple); }
+  .step.pres  { border-left-color: var(--red); }
+  .step.entr  { border-left-color: var(--green); }
+  .step.wide  { grid-column: 1 / -1; }
+
+  .step-num {
+    width: 30px; height: 30px; border-radius: 7px;
+    background: var(--navy); color: var(--white);
+    font-size: 13px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step.pago .step-num  { background: var(--purple); }
+  .step.pres .step-num  { background: var(--red); }
+  .step.entr .step-num  { background: var(--green); }
+
+  .step-icon { font-size: 18px; flex-shrink: 0; line-height: 1.65; }
+  .step-title {
+    font-size: clamp(10px, 2vw, 12px);
+    font-weight: 800; color: var(--navy);
+    line-height: 1.25; margin-bottom: 3px;
+  }
+  .step-desc {
+    font-size: clamp(9px, 1.8vw, 10px);
+    color: #6b7280; line-height: 1.5; font-weight: 600;
+  }
+  .step-badge {
+    display: inline-block; margin-top: 5px;
+    font-size: 8px; font-weight: 800;
+    padding: 2px 8px; border-radius: 10px;
+  }
+  .badge-warn { background: #fef3c7; color: #92400e; }
+  .badge-pago { background: #ede9fe; color: #4c1d95; }
+
+  /* CHECKLIST */
+  .checklist {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.055);
+    margin-bottom: 14px;
+  }
+  .cl-title {
+    font-size: 10px; font-weight: 900;
+    color: var(--navy); text-transform: uppercase;
+    letter-spacing: 1.5px; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .cl-title span { flex: 1; height: 1px; background: #e5e7eb; }
+  .cl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 8px;
+  }
+  .cl-item {
+    display: flex; gap: 7px; align-items: flex-start;
+    font-size: clamp(9px, 2vw, 10px); color: #374151;
+    font-weight: 700; line-height: 1.4;
+  }
+  .cl-check {
+    width: 16px; height: 16px; border-radius: 4px;
+    background: var(--navy); color: var(--white);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; flex-shrink: 0; margin-top: 1px;
+  }
+
+  /* FOOTER */
+  .inf-footer {
+    background: var(--off);
+    border-top: 1.5px solid #e5e7eb;
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .qr-block { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+  .qr-block img {
+    width: 76px; height: 76px;
+    border: 2px solid var(--navy);
+    border-radius: 8px; display: block;
+  }
+  .qr-label {
+    font-size: 8px; font-weight: 800;
+    color: var(--navy); text-transform: uppercase;
+    letter-spacing: 0.8px; text-align: center;
+  }
+  .dir-text { text-align: center; }
+  .dir-name {
+    font-family: 'Raleway', sans-serif;
+    font-size: clamp(10px, 2vw, 12px);
+    font-weight: 900; color: var(--navy);
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 4px;
+  }
+  .dir-addr {
+    font-size: clamp(10px, 2vw, 11px);
+    font-weight: 600; color: #4b5563;
+  }
+
+  /* PRINT BUTTON */
+  .print-btn {
+    margin-top: 14px;
+    background: var(--navy); color: var(--white);
+    border: none; padding: 10px 30px;
+    border-radius: 25px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px; font-weight: 800;
+    letter-spacing: 1px; cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .print-btn:hover { background: var(--red); transform: translateY(-2px); }
+
+  @media (max-width: 480px) {
+    .steps-grid { grid-template-columns: 1fr; }
+    .cl-grid    { grid-template-columns: 1fr; }
+    .inf-footer { flex-direction: column; gap: 14px; }
+  }
+
+  @media print {
+    @page { margin: 0.5cm; }
+    body { background: white; padding: 0; }
+    .page-label, .print-btn { display: none; }
+    .infografia { border-radius: 0; box-shadow: none; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<p class="page-label">✦ Legalización de Certificados Escolares ✦</p>
+
+<div class="infografia">
+
+  <div class="inf-header">
+    <div class="hdr-inner">
+      <div class="hdr-tag">Guía paso a paso · TDO</div>
+      <div class="hdr-title">¿Cómo legalizar tu <em>Certificado</em> Escolar?</div>
+      <div class="hdr-sub">Trámite oficial ante la Dirección de Legalización y Apostilla del Estado de Puebla · 11 pasos sencillos</div>
+    </div>
+  </div>
+
+  <div class="inf-body">
+
+    <div class="alert-box">
+      <span class="alert-icon">⚠️</span>
+      <div class="alert-text">La Orden de Cobro tiene vigencia de <strong>solo 2 días hábiles</strong>. Si no realizas el pago en ese tiempo, tu trámite se cancela automáticamente. También es indispensable adjuntar el documento en PDF con ambos lados visibles, legibles y sin recortes.</div>
+    </div>
+
+    <div class="steps-grid">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-icon">🌐</div>
+        <div>
+          <div class="step-title">Ingresa al portal oficial</div>
+          <div class="step-desc">Visita ventanilla.puebla.gob.mx y haz clic en "Iniciar Trámite" dentro de Legalización de Certificados.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-icon">👤</div>
+        <div>
+          <div class="step-title">Datos personales y orden de cobro</div>
+          <div class="step-desc">Llena el primer formulario con tus datos. Asegúrate de que tu correo electrónico esté correcto.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-icon">📄</div>
+        <div>
+          <div class="step-title">Datos del documento a legalizar</div>
+          <div class="step-desc">Llena el segundo formulario con la información del certificado escolar que deseas legalizar.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-icon">📤</div>
+        <div>
+          <div class="step-title">Carga el documento en PDF</div>
+          <div class="step-desc">Sube tu certificado escaneado por ambas caras, legible e íntegro, en formato PDF.</div>
+          <div><span class="step-badge badge-warn">⚠️ Ambas caras en PDF</span></div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-icon">🔍</div>
+        <div>
+          <div class="step-title">Revisa los avisos del sistema</div>
+          <div class="step-desc">Lee con atención los dos avisos del asistente virtual y verifica que tus datos sean correctos.</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-icon">✅</div>
+        <div>
+          <div class="step-title">Envía tu solicitud</div>
+          <div class="step-desc">Confirma haciendo clic en "ENVIAR SOLICITUD". Recibirás un acuse de confirmación en tu correo.</div>
+        </div>
+      </div>
+
+      <div class="step pago">
+        <div class="step-num">7</div>
+        <div class="step-icon">📧</div>
+        <div>
+          <div class="step-title">Descarga tu Orden de Cobro</div>
+          <div class="step-desc">Revisa tu correo y descarga la orden de pago enviada por el sistema. ¡Solo tienes 2 días para pagar!</div>
+          <div><span class="step-badge badge-pago">⏰ Vence en 2 días hábiles</span></div>
+        </div>
+      </div>
+
+      <div class="step pago">
+        <div class="step-num">8</div>
+        <div class="step-icon">💳</div>
+        <div>
+          <div class="step-title">Realiza el pago y recibe tu cita</div>
+          <div class="step-desc">Paga en línea, en banco o en kiosco del Gobierno. Una vez reflejado, recibirás la fecha de tu 1ª cita.</div>
+        </div>
+      </div>
+
+      <div class="step pres">
+        <div class="step-num">9</div>
+        <div class="step-icon">🏛️</div>
+        <div>
+          <div class="step-title">1ª Cita: Revisión de documentos</div>
+          <div class="step-desc">Acude con documento original, solicitud impresa, comprobante de pago e identificación oficial vigente (INE, pasaporte o licencia).</div>
+        </div>
+      </div>
+
+      <div class="step pres">
+        <div class="step-num">10</div>
+        <div class="step-icon">🔎</div>
+        <div>
+          <div class="step-title">Verificación y 2ª cita asignada</div>
+          <div class="step-desc">Si cumples todos los requisitos, el personal te indica la fecha de tu segunda cita para recoger tus documentos legalizados.</div>
+        </div>
+      </div>
+
+      <div class="step entr wide">
+        <div class="step-num" style="width:36px;height:36px;font-size:15px;">11</div>
+        <div class="step-icon" style="font-size:24px;line-height:1.5;">🎓</div>
+        <div>
+          <div class="step-title" style="font-size:13px;">2ª Cita: ¡Recoge tu Certificado Legalizado!</div>
+          <div class="step-desc" style="font-size:10px;">Acude a la Dirección de Legalización y Apostilla presentando tu acuse sellado de recibido e identificación oficial. Tu documento tiene validez oficial en todo el territorio nacional.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="checklist">
+      <div class="cl-title">📋 Documentos que debes llevar el día de tu cita <span></span></div>
+      <div class="cl-grid">
+        <div class="cl-item"><div class="cl-check">✓</div>Certificado original a legalizar</div>
+        <div class="cl-item"><div class="cl-check">✓</div>Solicitud impresa con fecha y hora</div>
+        <div class="cl-item"><div class="cl-check">✓</div>Comprobante fiscal de pago (original)</div>
+        <div class="cl-item"><div class="cl-check">✓</div>Identificación oficial vigente (INE / pasaporte / licencia)</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="inf-footer">
+    <div class="qr-block">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&color=0d1f4e&data=https://jsmangel88-cloud.github.io/infografia-legalizacion-certificado/" alt="QR Infografía">
+      <div class="qr-label">Escanea para ver<br>la infografía</div>
+    </div>
+    <div class="dir-text">
+      <div class="dir-name">Dirección de Legalización y Apostilla del Estado de Puebla</div>
+      <div class="dir-addr">📍 Calle 12 Norte 810, Barrio del Alto, Puebla, Pue.</div>
+    </div>
+  </div>
+
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
+
+</body>
+</html>
